@@ -10,7 +10,7 @@ template<std::size_t size>
 class ptd::bitset
 {
 private:
-	std::size_t m_bitlength{size};
+//	std::size_t m_bitlength{size};
 	std::size_t m_storage{};
 	
 public:
@@ -27,7 +27,7 @@ public:
 	
 	friend std::ostream& operator<<(std::ostream& out, const bitset& b)
 	{
-		for(std::size_t x{b.m_bitlength-1};; --x)
+		for(std::size_t x{size-1};; --x)
 		{
 			out << (b.ison(x))?"1":"0";
 			if(x==0)
@@ -40,19 +40,19 @@ public:
 public:
 	
 	//checking if bit is on
-	bool ison(int index) const;
+	bool ison(std::size_t index) const;
 
 	//flip a bit
-	bitset& flip(int index);
+	bitset& flip(std::size_t index);
 	
 	//invert all bits
 	bitset& invert();
 	
 	//turn on a bit
-	bitset& on(int index);
+	bitset& on(std::size_t index);
 	
 	//turn off a bit
-	bitset& off(int index);
+	bitset& off(std::size_t index);
 	
 //	#include "bitset.inl"
 };
@@ -61,18 +61,18 @@ template<std::size_t size>
 ptd::bitset<size>::bitset(std::size_t storage) {	m_storage = storage;	}
 
 template<std::size_t size>
-bool ptd::bitset<size>::ison(int index) const {	return (1<<index) & m_storage; }
+bool ptd::bitset<size>::ison(std::size_t index) const {	return (1<<index) & m_storage; }
 
 template<std::size_t size>
-ptd::bitset<size>& ptd::bitset<size>::flip(int index) {	m_storage ^= (1<<index); return *this;	}
+ptd::bitset<size>& ptd::bitset<size>::flip(std::size_t index) {	m_storage ^= (1<<index); return *this;	}
 
 template<std::size_t size>
 ptd::bitset<size>& ptd::bitset<size>::invert() {	m_storage = ~m_storage; return *this;	}
 
 template<std::size_t size>
-ptd::bitset<size>& ptd::bitset<size>::on(int index) {	m_storage |= (1<<index); return *this;	}
+ptd::bitset<size>& ptd::bitset<size>::on(std::size_t index) {	m_storage |= (1<<index); return *this;	}
 
 template<std::size_t size>
-ptd::bitset<size>& ptd::bitset<size>::off(int index){	m_storage &= ~(1<<index); return *this;	}
+ptd::bitset<size>& ptd::bitset<size>::off(std::size_t index){	m_storage &= ~(1<<index); return *this;	}
 
 #endif
