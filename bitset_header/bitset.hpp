@@ -27,8 +27,12 @@ public:
 	
 	friend std::ostream& operator<<(std::ostream& out, const bitset& b)
 	{
-		for(std::size_t x{b.m_bitlength-1}; x>=0; --x)
+		for(std::size_t x{b.m_bitlength-1};; --x)
+		{
 			out << (b.ison(x))?"1":"0";
+			if(x==0)
+				break;
+		}
 			
 		return out;
 	}
