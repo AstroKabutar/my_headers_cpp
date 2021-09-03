@@ -3,5 +3,5 @@ My CPP header file collection
 namespace.h has all the required classes or const declared
 other folders has respective headers
 
-v1.0
+v1.0  
 Bitset header added
