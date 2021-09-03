@@ -43,16 +43,16 @@ public:
 	bool ison(int index) const;
 
 	//flip a bit
-	void flip(int index);
+	bitset& flip(int index);
 	
 	//invert all bits
-	void invert();
+	bitset& invert();
 	
 	//turn on a bit
-	void on(int index);
+	bitset& on(int index);
 	
 	//turn off a bit
-	void off(int index);
+	bitset& off(int index);
 	
 //	#include "bitset.inl"
 };
